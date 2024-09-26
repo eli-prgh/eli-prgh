@@ -1,0 +1,17 @@
+import pandas as pd
+
+# Specify the path to your CSV file
+csv_file_path = r'C:\Users\Documents\W2\tbl2.1P26.scs'
+
+# Try reading the CSV file while skipping bad lines
+try:
+    data = pd.read_csv(csv_file_path, delimiter=';', on_bad_lines='skip')  # Change delimiter as needed
+    print(data)
+except FileNotFoundError:
+    print("The file was not found. Please check the file path.")
+except pd.errors.EmptyDataError:
+    print("The file is empty. Please check the file content.")
+except pd.errors.ParserError as e:
+    print(f"Error parsing the file: {e}")
+except Exception as e:
+    print(f"An error occurred: {e}")
